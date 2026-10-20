@@ -1,0 +1,64 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Be Vietnam Pro", ui-sans-serif, system-ui, "Segoe UI", sans-serif;
+
+  --color-brand-50: #eff5ff;
+  --color-brand-100: #dbe8fe;
+  --color-brand-200: #bfd6fe;
+  --color-brand-300: #93bbfd;
+  --color-brand-400: #6096fa;
+  --color-brand-500: #3b74f6;
+  --color-brand-600: #2557eb;
+  --color-brand-700: #1d44d8;
+  --color-brand-800: #1e39af;
+  --color-brand-900: #1e358a;
+  --color-brand-950: #172254;
+
+  --color-ink: #0b1530;
+  --color-sale: #e11d48;
+
+  --shadow-card: 0 1px 2px rgb(15 23 42 / 0.04), 0 8px 24px -12px rgb(29 68 216 / 0.18);
+  --shadow-pop: 0 20px 50px -20px rgb(29 68 216 / 0.35);
+
+  --animate-shimmer: shimmer 1.4s linear infinite;
+  @keyframes shimmer {
+    0% { background-position: -400px 0; }
+    100% { background-position: 400px 0; }
+  }
+}
+
+@layer base {
+  html { -webkit-tap-highlight-color: transparent; }
+  body { @apply bg-slate-50 font-sans text-ink antialiased; }
+  :focus-visible { @apply outline-2 outline-offset-2 outline-brand-500; }
+  ::selection { @apply bg-brand-200; }
+}
+
+@layer components {
+  .container-page { @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8; }
+  .card { @apply rounded-2xl border border-slate-200/70 bg-white shadow-card; }
+  .skeleton {
+    @apply rounded-lg bg-slate-200;
+    background-image: linear-gradient(90deg, rgb(226 232 240) 0px, rgb(241 245 249) 120px, rgb(226 232 240) 240px);
+    background-size: 800px 100%;
+    animation: var(--animate-shimmer);
+  }
+  .input {
+    @apply block w-full rounded-xl border border-slate-300 bg-white px-3.5 py-2.5 text-sm text-ink placeholder:text-slate-400
+      transition focus:border-brand-500 focus:outline-none focus:ring-4 focus:ring-brand-100 disabled:bg-slate-100
+      aria-[invalid=true]:border-rose-400 aria-[invalid=true]:focus:ring-rose-100;
+  }
+  .label { @apply mb-1.5 block text-sm font-medium text-slate-700; }
+  .chip {
+    @apply inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-white px-3 py-1.5 text-sm text-slate-700 transition
+      hover:border-brand-300 hover:text-brand-700 aria-pressed:border-brand-600 aria-pressed:bg-brand-50 aria-pressed:font-medium aria-pressed:text-brand-700;
+  }
+  .prose-ph p { @apply mb-3 leading-relaxed text-slate-700; }
+  .prose-ph h2 { @apply mb-2 mt-6 text-lg font-semibold text-ink; }
+  .prose-ph ul { @apply mb-3 list-disc space-y-1 pl-5 text-slate-700; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}

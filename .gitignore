@@ -1,0 +1,23 @@
+## .NET
+bin/
+obj/
+*.user
+.vs/
+TestResults/
+*.db
+*.db-shm
+*.db-wal
+
+## Node
+node_modules/
+dist/
+*.local
+
+## Bí mật
+.env
+.env.*
+!.env.example
+
+## Dữ liệu sinh ra khi chạy
+src/PhoneHub.Api/wwwroot/uploads/
+src/PhoneHub.Api/wwwroot/images/products/
